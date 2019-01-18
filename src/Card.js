@@ -6,7 +6,7 @@ class Card extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {image: 'https://via.placeholder.com/150'};
+    this.state = {image: null};
   }
 
   componentDidMount() {
@@ -15,11 +15,16 @@ class Card extends React.Component {
       this.setState({image: `https://raw.githubusercontent.com/schmich/hearthstone-card-images/4.12.2/rel/${this.props.image}.png`})
     })
     .catch( error => {
-      this.setState({image: 'https://via.placeholder.com/150'})
+      // https://via.placeholder.com/150
+      this.setState({image: null})
     })
   }
 
   render() {
+    if(this.state.image === null) {
+        return <div></div>
+    }
+    else {
     return (
 
       <div className="column is-3">
@@ -28,6 +33,7 @@ class Card extends React.Component {
           </figure>
       </div>
     );
+  }
   }
 }
 
