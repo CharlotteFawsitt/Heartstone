@@ -17,26 +17,6 @@ class Main extends Component {
             <li><NavLink to="./CardView">Classic Cards</NavLink></li>
             <Route path="/CardView" component={CardView}/>
             <li><a href="/stuff">Basic Cards</a></li>
-            <li><a href="/stuff">Classic Cards</a></li>
-            <li><a href="/stuff">Classic Cards</a></li>
-            <li><a href="/stuff">Classic Cards</a></li>
-            <li><a href="/stuff">Classic Cards</a></li>
-            <li><a href="/stuff">Classic Cards</a></li>
-            <li><a href="/stuff">Classic Cards</a></li>
-            <li><a href="/stuff">Classic Cards</a></li>
-            <li><a href="/stuff">Classic Cards</a></li>
-            <li><a href="/stuff">Classic Cards</a></li>
-            <li><a href="/stuff">Classic Cards</a></li>
-            <li><a href="/stuff">Classic Cards</a></li>
-            <li><a href="/stuff">Classic Cards</a></li>
-            <li><a href="/stuff">Classic Cards</a></li>
-            <li><a href="/stuff">Classic Cards</a></li>
-            <li><a href="/stuff">Classic Cards</a></li>
-            <li><a href="/stuff">Classic Cards</a></li>
-            <li><a href="/stuff">Classic Cards</a></li>
-            <li><a href="/stuff">Classic Cards</a></li>
-            <li><a href="/stuff">Classic Cards</a></li>
-            <li><a href="/stuff">Classic Cards</a></li>
           </ul>
           <div className="content">
 

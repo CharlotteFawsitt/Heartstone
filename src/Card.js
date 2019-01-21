@@ -22,7 +22,7 @@ class Card extends React.Component {
 
   render() {
     if(this.state.image === null) {
-        return <div></div>
+        return null
     }
     else {
     return (

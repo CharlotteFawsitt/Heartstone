@@ -17,8 +17,8 @@ class CardView extends React.Component {
     axios.get("https://omgvamp-hearthstone-v1.p.rapidapi.com/cards",
     {'headers': {'X-RapidAPI-Key': 'CjLDo3YPhsmshbDUUlm6Vc3Ej1Mop1JXzNPjsnDoAPPgzoHuRn'}})
     .then(response => {
-      this.setState({basic : response.data.Basic });
-      this.setState({classic : response.data.Classic})
+      // this.setState({basic : response.data.Basic });
+      this.setState({classic : response.data.Classic});
       console.log(response);
     })
     .catch(err => {
