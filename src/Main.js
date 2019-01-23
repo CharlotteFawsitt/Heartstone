@@ -11,9 +11,10 @@ class Main extends Component {
     return (
       <HashRouter>
         <div>
+
           <h1>Simple SPA</h1>
           <ul className="header">
-            <li><NavLink to="/">Home</NavLink></li>
+            <li><input id="search" type="text" placeholder="Search.." /><NavLink to="/CardView"><button>Search</button></NavLink></li>
             <li><NavLink to="./CardView">Classic Cards</NavLink></li>
             <Route path="/CardView" component={CardView}/>
             <li><a href="/stuff">Basic Cards</a></li>
