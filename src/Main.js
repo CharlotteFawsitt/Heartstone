@@ -1,29 +1,60 @@
 import React, { Component } from "react";
-import {
-  Route,
-  NavLink,
-  HashRouter
-} from "react-router-dom";
 import CardView from './CardView';
+import axios from 'axios';
 
-class Main extends Component {
+class Main extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = {search: "",
+                  cards: []};
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.submit = this.submit.bind(this);
+  }
+
+  submit() {
+    let name = this.state.search.charAt(0).toUpperCase() + this.state.search.slice(1);
+    console.log(name);
+    axios.get(`https://omgvamp-hearthstone-v1.p.rapidapi.com/cards/search/${name}`,
+    {'headers': {'X-RapidAPI-Key': 'CjLDo3YPhsmshbDUUlm6Vc3Ej1Mop1JXzNPjsnDoAPPgzoHuRn'}})
+    .then(response => {
+      this.setState({cards: response.data});
+      console.log(response);
+    })
+    .catch(err => {
+      console.log(err);
+    });
+  }
+
+
+  handleChange(event) {
+    this.setState({search: event.target.value});
+  }
+
+  handleSubmit(event) {
+    event.preventDefault();
+    this.submit();
+
+  }
+
   render() {
     return (
-      <HashRouter>
+
         <div>
 
-          <h1>Simple SPA</h1>
-          <ul className="header">
-            <li><input id="search" type="text" placeholder="Search.." /><NavLink to="/CardView"><button>Search</button></NavLink></li>
-            <li><NavLink to="./CardView">Classic Cards</NavLink></li>
-            <Route path="/CardView" component={CardView}/>
-            <li><a href="/stuff">Basic Cards</a></li>
-          </ul>
-          <div className="content">
 
-          </div>
+          <form  onSubmit={this.handleSubmit}>
+
+            <input value={this.state.search} onChange={this.handleChange} type="text" placeholder="Search.." />
+
+            <input type="submit" value="submit"/>
+          </form>
+          <CardView cards={this.state.cards} />
+
+
         </div>
-      </HashRouter>
+
     );
   }
 }
