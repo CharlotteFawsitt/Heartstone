@@ -12,32 +12,19 @@ class CardView extends React.Component {
 
   }
 
-
-//   submit() {
-//   let name = this.props.search.charAt(0).toUpperCase() + this.props.search.slice(1);
-//     this.props.submit = false;
-//     axios.get(`https://omgvamp-hearthstone-v1.p.rapidapi.com/cards/search/${name}`,
-//     {'headers': {'X-RapidAPI-Key': 'CjLDo3YPhsmshbDUUlm6Vc3Ej1Mop1JXzNPjsnDoAPPgzoHuRn'}})
-//     .then(response => {
-//       this.setState({card: response.data});
-//       console.log(response);
-//     })
-//     .catch(err => {
-//       console.log(err);
-//     });
-// }
-
   render() {
-    const cardList = this.props.cards.map(c => (
+    const cardList = this.props.cards.map((c,i) => (
        <Card
     key={c.cardId}
+    id={c.cardId}
     name={c.name}
-    image={c.dbfId} />
+    image={c.dbfId}
+    currentCard={this.props.cards[i]} />
 
 ));
     return (
       <div>
-        <div className="columns is-multiline">{cardList}</div>
+        <div className="columns is-multiline is-centered">{cardList}</div>
 
       </div>
     )

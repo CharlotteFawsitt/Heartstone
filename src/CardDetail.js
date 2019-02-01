@@ -10,17 +10,14 @@ class CardDetail extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { card: {}, image: null };
+    this.state = { card: {}, image: null};
   }
 
   componentDidMount() {
-    const {
-      match: { params }
-    } = this.props;
     axios
       .get(
         `https://omgvamp-hearthstone-v1.p.rapidapi.com/cards/search/${
-          params.name
+          this.props.match.params.name
         }`,
         {
           headers: {
@@ -31,7 +28,7 @@ class CardDetail extends React.Component {
       )
       .then(response => {
         this.setState({ card: response.data["0"] });
-        console.log(this.state.card.name);
+        console.log(this.props);
       })
       .catch(err => {
         console.log(err);
@@ -39,7 +36,7 @@ class CardDetail extends React.Component {
   }
   render() {
     const cardList = (
-      <div className="column is-3">
+      <div className="column is-narrow">
         <figure className="image">
           <img
             alt="Card"
@@ -50,14 +47,22 @@ class CardDetail extends React.Component {
           />
         </figure>
         <div className="card-content">
-          <p>{`Card name: ${this.state.card.name}`}</p>
+          {(this.state.card.artist ? <p dangerouslySetInnerHTML={{__html: `<b>Card artist</b>: ${this.state.card.artist}`}} /> : "")}
+          <p dangerouslySetInnerHTML={{__html: `<b>Card name</b>: ${this.state.card.name}`}} />
+          {(this.state.card.flavor ? <p dangerouslySetInnerHTML={{__html: `<b>Flavor</b>: ${this.state.card.flavor}`}}/> : "")}
+          {(this.state.card.mechanics ? <p dangerouslySetInnerHTML={{ __html: this.state.card.text }} /> : "")}
+          <p dangerouslySetInnerHTML={{__html: `<b>Card text</b>: ${this.state.card.text}`}} />
+
+
+
+
         </div>
-      </div>
+    </div>
     );
 
     return (
       <div>
-        <div className="columns is-multiline">{cardList}</div>
+        <div className="columns is-multiline is-centered">{cardList}</div>
       </div>
     );
   }

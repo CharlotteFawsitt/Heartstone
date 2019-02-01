@@ -1,12 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {
-  Route,
-  Link,
-  BrowserRouter
-} from "react-router-dom";
+import {Route, Link, BrowserRouter} from "react-router-dom";
 import Main from './Main';
-import CardDetail from './CardDetail'
+import CardDetail from './CardDetail';
+import logo from './images/hearthstone.png'
 
 class Home extends React.Component {
   constructor(props) {
@@ -14,37 +11,28 @@ class Home extends React.Component {
   }
 
   render() {
-    return(
-    <BrowserRouter>
+    return (<BrowserRouter>
       <div>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/about/">About</Link>
-            </li>
-            <li>
-              <Link to="/users/">Users</Link>
-            </li>
-          </ul>
-        </nav>
-       <Route exact path="/" component={Main} />
-       <Route path="/about/" component={About} />
-       <Route path="/users/" component={Users} />
-       <Route path="/card/:name" component={CardDetail} />
-     </div>
-    </BrowserRouter>);
-  }
-}
+        <nav className="navbar" role="navigation">
+          <div className="navbar-brand">
+            <a className="navbar-item" href="https://playhearthstone.com/en-us/">
+              <img src={logo} width="112" height="28" /></a>
 
+                <Link to="/" className="navbar-item">Home</Link>
 
+                <Link to="/about/" className="navbar-item">About</Link>
 
-const About = () => <h2>About</h2>;
-const Users = () => <h2>Users</h2>;
-
-ReactDOM.render(
-  <Home />,
+                <Link to="/users/" className="navbar-item">Users</Link>
+            </div>
+          </nav>
+          <Route exact path="/" component={Main}/>
+          <Route path="/about/" component={About}/>
+          <Route path="/users/" component={Users}/>
+          <Route path="/card/:name" component={CardDetail}/>
+        </div>
+      </BrowserRouter>); } } const About = () =>
+      <h2>About</h2>; const Users = () =>
+      <h2>Users</h2>; ReactDOM.render(
+      <Home/>,
   document.getElementById('root')
 );
