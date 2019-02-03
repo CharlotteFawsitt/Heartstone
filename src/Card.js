@@ -11,7 +11,7 @@ class Card extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {image: null, currentCard: this.props.currentCard};
+    this.state = {image: null};
   }
 
   componentDidMount() {
@@ -25,6 +25,8 @@ class Card extends React.Component {
   }
 
   render() {
+  const currentCard = this.props.currentCard;
+  console.log(currentCard);
     if(this.state.image === null) {
         return null
     }
@@ -33,12 +35,10 @@ class Card extends React.Component {
 
       <div className="column is-narrow">
             <figure className="image">
-            <Link to={`/card/${this.props.name}`}>
+            <Link to={{ pathname:`/card/${this.props.name}`, state: {currentCard} }}>
                           <img alt="Card" src={this.state.image} style={{width: '253px', height: '340px'}} />
             </Link>
-            <Route path="/card/:name" render={(props) =>(
-    <CardDetail currentCard={this.state.currentCard} />)
-  }/>
+            <Route path="/card/:name" Component={CardDetail}/>
           </figure>
       </div>
     );

@@ -16,19 +16,10 @@ class CardDetail extends React.Component {
   componentDidMount() {
     axios
       .get(
-        `https://omgvamp-hearthstone-v1.p.rapidapi.com/cards/search/${
-          this.props.match.params.name
-        }`,
-        {
-          headers: {
-            "X-RapidAPI-Key":
-              "CjLDo3YPhsmshbDUUlm6Vc3Ej1Mop1JXzNPjsnDoAPPgzoHuRn"
-          }
-        }
-      )
+        `https://raw.githubusercontent.com/schmich/hearthstone-card-images/4.12.2/rel/${this.props.location.state.currentCard.dbfId}.png`)
       .then(response => {
-        this.setState({ card: response.data["0"] });
-        console.log(this.props);
+        this.setState({ card: this.props.location.state.currentCard});
+        console.log(this.state.card);
       })
       .catch(err => {
         console.log(err);
@@ -49,6 +40,7 @@ class CardDetail extends React.Component {
         <div className="card-content">
           {(this.state.card.artist ? <p dangerouslySetInnerHTML={{__html: `<b>Card artist</b>: ${this.state.card.artist}`}} /> : "")}
           <p dangerouslySetInnerHTML={{__html: `<b>Card name</b>: ${this.state.card.name}`}} />
+          <p>{this.state.card.playerClass}</p>
           {(this.state.card.flavor ? <p dangerouslySetInnerHTML={{__html: `<b>Flavor</b>: ${this.state.card.flavor}`}}/> : "")}
           {(this.state.card.mechanics ? <p dangerouslySetInnerHTML={{ __html: this.state.card.text }} /> : "")}
           <p dangerouslySetInnerHTML={{__html: `<b>Card text</b>: ${this.state.card.text}`}} />
