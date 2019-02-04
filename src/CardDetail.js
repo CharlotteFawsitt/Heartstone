@@ -19,7 +19,7 @@ class CardDetail extends React.Component {
         `https://raw.githubusercontent.com/schmich/hearthstone-card-images/4.12.2/rel/${this.props.location.state.currentCard.dbfId}.png`)
       .then(response => {
         this.setState({ card: this.props.location.state.currentCard});
-        console.log(this.state.card);
+        console.log(this.props);
       })
       .catch(err => {
         console.log(err);

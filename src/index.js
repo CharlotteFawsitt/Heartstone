@@ -4,6 +4,7 @@ import {Route, Link, BrowserRouter} from "react-router-dom";
 import Main from './Main';
 import CardDetail from './CardDetail';
 import logo from './images/hearthstone.png'
+import CardBacks from './CardBacks';
 
 class Home extends React.Component {
   constructor(props) {
@@ -22,12 +23,12 @@ class Home extends React.Component {
 
                 <Link to="/about/" className="navbar-item">About</Link>
 
-                <Link to="/users/" className="navbar-item">Users</Link>
+                <Link to="/CardBacks/" className="navbar-item">CardBacks</Link>
             </div>
           </nav>
           <Route exact path="/" component={Main}/>
           <Route path="/about/" component={About}/>
-          <Route path="/users/" component={Users}/>
+          <Route path="/CardBacks/" component={CardBacks}/>
           <Route path="/card/:name" component={CardDetail}/>
         </div>
       </BrowserRouter>); } } const About = () =>
