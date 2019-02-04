@@ -1,14 +1,46 @@
 import React, { Component } from "react";
-import ReactDOM from 'react-dom';
-import axios from 'axios';
-import Card from './Card';
-import Main from './Main';
+import ReactDOM from "react-dom";
+import axios from "axios";
+import Card from "./Card";
+import Main from "./Main";
+import CardForBack from "./CardForBack"
 
-
-// https://omgvamp-hearthstone-v1.p.rapidapi.com/cardbacks
 class CardBacks extends React.Component {
   constructor(props) {
     super(props);
-}
+
+    this.state = {backs: []};
   }
+
+  componentDidMount() {
+    axios
+      .get(
+        "https://omgvamp-hearthstone-v1.p.rapidapi.com/cardbacks", {
+          'headers': {
+            'X-RapidAPI-Key': 'CjLDo3YPhsmshbDUUlm6Vc3Ej1Mop1JXzNPjsnDoAPPgzoHuRn'
+          }
+        })
+      .then(response => {
+        this.setState({ backs: response.data });
+        console.log(this.state.backs);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
+
+  render(){
+    const cardList = this.state.backs.map( b => (
+       <CardForBack
+    key={b.cardBackId}
+    image={b.img} />
+
+));
+    return(
+      <div>
+        <div className="columns is-multiline is-centered">{cardList}</div>
+      </div>
+    )
+  }
+}
 export default CardBacks;
