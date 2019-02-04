@@ -1,8 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import axios from "axios";
-import Card from "./Card";
-import Main from "./Main";
 
 // this.props.match.params.id => card's name
 
@@ -10,30 +8,18 @@ class CardDetail extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { card: {}, image: null};
+    this.state = { card: this.props.location.state.currentCard, image: null};
   }
 
-  componentDidMount() {
-    axios
-      .get(
-        `https://raw.githubusercontent.com/schmich/hearthstone-card-images/4.12.2/rel/${this.props.location.state.currentCard.dbfId}.png`)
-      .then(response => {
-        this.setState({ card: this.props.location.state.currentCard});
-        console.log(this.props);
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  }
+
   render() {
     const cardList = (
       <div className="column is-narrow">
         <figure className="image">
           <img
             alt="Card"
-            src={`https://raw.githubusercontent.com/schmich/hearthstone-card-images/4.12.2/rel/${
-              this.state.card.dbfId
-            }.png`}
+            src={
+              this.state.card.img}
             style={{ width: "253px", height: "340px" }}
           />
         </figure>

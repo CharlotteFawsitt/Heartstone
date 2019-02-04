@@ -10,38 +10,38 @@ import CardDetail from './CardDetail';
 class Card extends React.Component {
   constructor(props) {
     super(props);
-
-    this.state = {image: null};
+    this.handleError = this.handleError.bind(this);
+      this.state = {image: null, errored: false};
   }
 
-  componentDidMount() {
-    axios.get(`https://raw.githubusercontent.com/schmich/hearthstone-card-images/4.12.2/rel/${this.props.image}.png`)
-    .then( response => {
-      this.setState({image: `https://raw.githubusercontent.com/schmich/hearthstone-card-images/4.12.2/rel/${this.props.image}.png`})
-    })
-    .catch( error => {
-      this.setState({image: null})
-    });
+
+    getInitialState(event) {
+    return {errored: true};
+  }
+
+  handleError(error) {
+    this.setState({errored: true});
   }
 
   render() {
   const currentCard = this.props.currentCard;
-  console.log(currentCard);
-    if(this.state.image === null) {
-        return null
-    }
-    else {
+  if(!this.props.currentCard.hasOwnProperty('img')) {
+      return null
+  }
+else if(this.state.errored) {
+  return null}
+  else {
     return (
-
       <div className="column is-narrow">
             <figure className="image">
             <Link to={{ pathname:`/card/${this.props.name}`, state: {currentCard} }}>
-                          <img alt="Card" src={this.state.image} style={{width: '253px', height: '340px'}} />
+                          <img alt="Card" onError={this.handleError} src={this.props.currentCard.img} style={{width: '253px', height: '340px'}} />
             </Link>
             <Route path="/card/:name" Component={CardDetail}/>
           </figure>
       </div>
     );
+
   }
   }
 }

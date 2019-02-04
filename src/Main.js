@@ -15,6 +15,7 @@ class Main extends React.Component {
     this.submit = this.submit.bind(this);
   }
 
+
   submit() {
     let name = this.state.search.charAt(0).toUpperCase() + this.state.search.slice(1);
     console.log(name);

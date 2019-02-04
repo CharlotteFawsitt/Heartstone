@@ -5,14 +5,15 @@ import {
   Route,
   Link
 } from "react-router-dom";
-import CardDetail from './CardDetail';
+import CardBackViewer from './CardBackViewer'
 
 class CardForBack extends React.Component {
   constructor(props) {
     super(props);
 
-    this.handleError = this.handleError.bind(this)
-    this.state = {image: this.props.image, errored: false};
+    this.handleError = this.handleError.bind(this);
+    this.state = {image: this.props.image, errored: false, back: this.props.back};
+
   }
 
   getInitialState(event) {
@@ -24,7 +25,7 @@ handleError(error) {
 }
 
   render() {
-    console.log(this.state.image);
+    const back = this.state.back;
       if(this.state.errored) {
           return null
       }
@@ -33,7 +34,10 @@ handleError(error) {
 
       <div className="column is-narrow">
             <figure className="image">
-                          <img alt="Card" onError={this.handleError} src={this.state.image} style={{width: '253px', height: '340px'}} />
+            <Link to={{ pathname:`/cardBack/${this.props.name}`, state: {back} }}>
+                          <img alt="CardBack" onError={this.handleError} src={this.props.image} style={{width: '253px', height: '340px'}} />
+            </Link>
+            <Route path="/cardBack/:name" Component={CardBackViewer}/>
           </figure>
       </div>
     );

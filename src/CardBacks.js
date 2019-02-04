@@ -22,7 +22,6 @@ class CardBacks extends React.Component {
         })
       .then(response => {
         this.setState({ backs: response.data });
-        console.log(this.state.backs);
       })
       .catch(err => {
         console.log(err);
@@ -30,10 +29,12 @@ class CardBacks extends React.Component {
   }
 
   render(){
-    const cardList = this.state.backs.map( b => (
+    const cardList = this.state.backs.map( (b,i) => (
        <CardForBack
     key={b.cardBackId}
-    image={b.img} />
+    image={b.img}
+    name={b.name}
+    back={this.state.backs[i]} />
 
 ));
     return(

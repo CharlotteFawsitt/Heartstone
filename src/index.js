@@ -5,6 +5,8 @@ import Main from './Main';
 import CardDetail from './CardDetail';
 import logo from './images/hearthstone.png'
 import CardBacks from './CardBacks';
+import CardBackViewer from './CardBackViewer';
+import CardForBack from './CardForBack';
 
 class Home extends React.Component {
   constructor(props) {
@@ -29,6 +31,7 @@ class Home extends React.Component {
           <Route exact path="/" component={Main}/>
           <Route path="/about/" component={About}/>
           <Route path="/CardBacks/" component={CardBacks}/>
+          <Route path="/cardBack/:name/" component={CardBackViewer}/>
           <Route path="/card/:name" component={CardDetail}/>
         </div>
       </BrowserRouter>); } } const About = () =>
