@@ -6,12 +6,10 @@ class CardBackViewer extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {back: this.props.location.state.back};
+    this.state = { back: this.props.location.state.back };
   }
 
-
   render() {
-    console.log(this.props.location.state.back);
     const cardBack = (
       <div className="column is-3">
         <figure className="image">
@@ -22,11 +20,23 @@ class CardBackViewer extends React.Component {
           />
         </figure>
         <div className="column">
-          <p dangerouslySetInnerHTML={{__html: `<b>Card Name</b>: ${this.state.back.name}`}}/>
-          <p dangerouslySetInnerHTML={{__html: `<b>Description</b>: ${this.state.back.description}`}}/>
-          <p dangerouslySetInnerHTML={{__html: `<b>How to obtain</b>: ${this.state.back.howToGet}`}}/>
+          <p
+            dangerouslySetInnerHTML={{
+              __html: `<b>Card Name</b>: ${this.state.back.name}`
+            }}
+          />
+          <p
+            dangerouslySetInnerHTML={{
+              __html: `<b>Description</b>: ${this.state.back.description}`
+            }}
+          />
+          <p
+            dangerouslySetInnerHTML={{
+              __html: `<b>How to obtain</b>: ${this.state.back.howToGet}`
+            }}
+          />
         </div>
-    </div>
+      </div>
     );
 
     return (
@@ -37,4 +47,4 @@ class CardBackViewer extends React.Component {
   }
 }
 
-export default CardBackViewer
+export default CardBackViewer;

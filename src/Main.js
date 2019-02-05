@@ -19,17 +19,19 @@ class Main extends React.Component {
 
     this.info = (
       <div className="column is-4">
-      <p>You can search by name or type. Just select which one you would like to search by
-         in the drop down menu. Press enter when you have finished typing</p>
-       </div>
+        <p>
+          You can search by name or type. Just select which one you would like
+          to search by in the drop down menu. Press enter when you have finished
+          typing
+        </p>
+      </div>
     );
   }
 
   submit() {
     let name =
       this.state.search.charAt(0).toUpperCase() + this.state.search.slice(1);
-    console.log(name);
-    if(this.state.searchType === "Name"){
+    if (this.state.searchType === "Name") {
       axios
         .get(
           `https://omgvamp-hearthstone-v1.p.rapidapi.com/cards/search/${name}`,
@@ -42,12 +44,11 @@ class Main extends React.Component {
         )
         .then(response => {
           this.setState({ cards: response.data });
-          console.log(response);
         })
         .catch(err => {
           console.log(err);
         });
-    } else if(this.state.searchType === "Race"){
+    } else if (this.state.searchType === "Race") {
       axios
         .get(
           `https://omgvamp-hearthstone-v1.p.rapidapi.com/cards/races/${name}`,
@@ -60,7 +61,6 @@ class Main extends React.Component {
         )
         .then(response => {
           this.setState({ cards: response.data });
-          console.log(response);
         })
         .catch(err => {
           console.log(err);
@@ -68,26 +68,24 @@ class Main extends React.Component {
     }
   }
 
-  handleDropDown(event){
-    (event.target.value === "Name" ? this.setState({searchType: "Name" }): this.setState({searchType: "Race"}))
-    console.log(this.state.searchType);
+  handleDropDown(event) {
+    event.target.value === "Name"
+      ? this.setState({ searchType: "Name" })
+      : this.setState({ searchType: "Race" });
   }
 
   handleChange(event) {
     this.setState({ search: event.target.value });
-    console.log(this.state.searchType);
   }
 
   handleSubmit(event) {
     event.preventDefault();
-    this.setState({info: false});
-    console.log(this.state.info);
+    this.setState({ info: false });
     this.submit();
   }
 
-
   render() {
-    const style = !this.state.info ? {display: "none"} : {};
+    const style = !this.state.info ? { display: "none" } : {};
     return (
       <div>
         <div className="text columns is-centered" style={style}>
@@ -110,9 +108,7 @@ class Main extends React.Component {
                   value={this.state.searchType}
                   onChange={this.handleDropDown}
                 >
-                  <option value="Name">
-                    Name
-                  </option>
+                  <option value="Name">Name</option>
                   <option value="Race">Race</option>
                 </select>
               </div>

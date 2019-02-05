@@ -7,7 +7,7 @@ import logo from "./images/hearthstone.png";
 import CardBacks from "./CardBacks";
 import CardBackViewer from "./CardBackViewer";
 import CardForBack from "./CardForBack";
-import About from './About'
+import About from "./About";
 
 class Home extends React.Component {
   constructor(props) {
