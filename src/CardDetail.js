@@ -13,23 +13,26 @@ class CardDetail extends React.Component {
 
 
   render() {
+    console.log(this.state.card);
     const cardList = (
-      <div className="column is-narrow">
+      <div className="column is-3">
         <figure className="image">
           <img
             alt="Card"
             src={
-              this.state.card.img}
+              this.state.card.imgGold}
             style={{ width: "253px", height: "340px" }}
           />
         </figure>
-        <div className="card-content">
+        <div className="column">
           {(this.state.card.artist ? <p dangerouslySetInnerHTML={{__html: `<b>Card artist</b>: ${this.state.card.artist}`}} /> : "")}
           <p dangerouslySetInnerHTML={{__html: `<b>Card name</b>: ${this.state.card.name}`}} />
-          <p>{this.state.card.playerClass}</p>
+          <p dangerouslySetInnerHTML={{__html: `<b>Player Class</b>: ${this.state.card.playerClass}`}}/>
+          <p dangerouslySetInnerHTML={{__html: `<b>Card Set</b>: ${this.state.card.cardSet}`}}/>
           {(this.state.card.flavor ? <p dangerouslySetInnerHTML={{__html: `<b>Flavor</b>: ${this.state.card.flavor}`}}/> : "")}
           {(this.state.card.mechanics ? <p dangerouslySetInnerHTML={{ __html: this.state.card.text }} /> : "")}
-          <p dangerouslySetInnerHTML={{__html: `<b>Card text</b>: ${this.state.card.text}`}} />
+          {(this.state.card.text ? <p dangerouslySetInnerHTML={{ __html: `<b>Card text</b>: ${this.state.card.text}` }} /> : "")}
+          <p dangerouslySetInnerHTML={{__html: `<b>Card type</b>: ${this.state.card.type}`}}/>
 
 
 
