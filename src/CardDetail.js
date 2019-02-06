@@ -53,11 +53,6 @@ class CardDetail extends React.Component {
           ) : (
             ""
           )}
-          {this.state.card.mechanics ? (
-            <p dangerouslySetInnerHTML={{ __html: this.state.card.text }} />
-          ) : (
-            ""
-          )}
           {this.state.card.text ? (
             <p
               dangerouslySetInnerHTML={{
