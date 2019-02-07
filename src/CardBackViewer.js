@@ -20,21 +20,9 @@ class CardBackViewer extends React.Component {
           />
         </figure>
         <div className="column">
-          <p
-            dangerouslySetInnerHTML={{
-              __html: `<b>Card Name</b>: ${this.state.back.name}`
-            }}
-          />
-          <p
-            dangerouslySetInnerHTML={{
-              __html: `<b>Description</b>: ${this.state.back.description}`
-            }}
-          />
-          <p
-            dangerouslySetInnerHTML={{
-              __html: `<b>How to obtain</b>: ${this.state.back.howToGet}`
-            }}
-          />
+          <p><b>Card Name</b>: {this.state.back.name}</p>
+          <p><b>Description</b>: {this.state.back.description}</p>
+          <p><b>How to obtain</b>: {this.state.back.howToGet}</p>
         </div>
       </div>
     );

@@ -29,8 +29,7 @@ class Main extends React.Component {
   }
 
   submit() {
-    let name =
-      this.state.search.charAt(0).toUpperCase() + this.state.search.slice(1);
+    let name = this.state.search.charAt(0).toUpperCase() + this.state.search.slice(1);
     if (this.state.searchType === "Name") {
       axios
         .get(

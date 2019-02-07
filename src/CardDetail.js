@@ -21,35 +21,15 @@ class CardDetail extends React.Component {
         </figure>
         <div className="column">
           {this.state.card.artist ? (
-            <p
-              dangerouslySetInnerHTML={{
-                __html: `<b>Card artist</b>: ${this.state.card.artist}`
-              }}
-            />
+            <p><b>Card Artist</b>: {this.state.card.artist}</p>
           ) : (
             ""
           )}
-          <p
-            dangerouslySetInnerHTML={{
-              __html: `<b>Card name</b>: ${this.state.card.name}`
-            }}
-          />
-          <p
-            dangerouslySetInnerHTML={{
-              __html: `<b>Player Class</b>: ${this.state.card.playerClass}`
-            }}
-          />
-          <p
-            dangerouslySetInnerHTML={{
-              __html: `<b>Card Set</b>: ${this.state.card.cardSet}`
-            }}
-          />
+          <p><b>Card Name</b>: {this.state.card.name}</p>
+          <p><b>Player Class</b>: {this.state.card.playerClass}</p>
+          <p><b>Card Set</b>: {this.state.card.cardSet}</p>
           {this.state.card.flavor ? (
-            <p
-              dangerouslySetInnerHTML={{
-                __html: `<b>Flavor</b>: ${this.state.card.flavor}`
-              }}
-            />
+            <p><b>Flavor</b>: {this.state.card.flavor}</p>
           ) : (
             ""
           )}
@@ -62,11 +42,7 @@ class CardDetail extends React.Component {
           ) : (
             ""
           )}
-          <p
-            dangerouslySetInnerHTML={{
-              __html: `<b>Card type</b>: ${this.state.card.type}`
-            }}
-          />
+          <p><b>Card Type</b>: {this.state.card.type}</p>
         </div>
       </div>
     );
