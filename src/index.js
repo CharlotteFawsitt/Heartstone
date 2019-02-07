@@ -4,6 +4,7 @@ import { Route, Link, BrowserRouter } from "react-router-dom";
 import Main from "./Main";
 import CardDetail from "./CardDetail";
 import logo from "./images/hearthstone.png";
+import githubLogo from "./images/GitHub-Mark-64px.png";
 import CardBacks from "./CardBacks";
 import CardBackViewer from "./CardBackViewer";
 import CardForBack from "./CardForBack";
@@ -38,6 +39,14 @@ class Home extends React.Component {
               <Link to="/CardBacks/" className="navbar-item">
                 CardBacks
               </Link>
+            </div>
+            <div className="navbar-brand navbar-end">
+              <a
+                className="navbar-item"
+                href="https://github.com/CharlotteFawsitt/Heartstone"
+              >
+                <img src={githubLogo} />
+              </a>
             </div>
           </nav>
           <Route exact path="/" component={Main} />
